@@ -132,11 +132,17 @@ correct it should work
 **terraform init**
 - This will initialise the current directory as a terraform environment
 
-**terraform plan**
+**terraform validate**
 - This will check the terraform files for any errors and notify us of where these
 errors occurred
 - It is useful to run this after making changes to make sure you haven't made
 a syntax error
 
+**terraform plan**
+- This will show the changes that the current build will enact
+
 **terraform build**
 - This will execute the code in your terraform files
+
+**terraform destroy**
+- This will destroy the created infrastructure
