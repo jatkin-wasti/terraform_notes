@@ -13,7 +13,7 @@ cloud provider (e.g. Azure, AWS etc) by changing one or two lines, while keeping
   and cost of downtime), similar to a disaster recovery plan
   - If one provider goes down, the traffic can be diverted to the other provider
 - Lets you scale up and down as needed
-![Terraform](/images/terraform_diagram.png)
+![Terraform](images/terraform_diagram.png)
 ## Difference between Ansible and Terraform
 - Ansible: Better at Configuration management (provisioning)
 - Terraform: Better at Orchestration management (networking)
