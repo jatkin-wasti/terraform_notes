@@ -2,11 +2,11 @@
 ## AWS as we have our AMI's on AWS
 
 provider "aws" {
-         region = "eu-west-1"
+         region = var.region
 }
 
 resource "aws_instance" "nodejs_instance"{
-        ami = "ami-04337085e29a3125f"
+        ami = var.app_ami
         instance_type = "t2.micro"
         associate_public_ip_address = true
         tags = {

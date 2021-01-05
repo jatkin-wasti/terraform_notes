@@ -1,7 +1,8 @@
 resource "aws_instance" "db_instance"{
-        ami = "ami-0ce081d2daeaa8021"
+        ami = var.db_ami
         instance_type = "t2.micro"
         associate_public_ip_address = true
+        security_groups = ["eng74-jamie-tf-db-SG"]
         tags = {
             Name = "eng74-jamie-tf-db"
         }
