@@ -128,12 +128,15 @@ correct it should work
 ## Terraform commands
 **terraform help**
 - This will show you a list of commands that you can use with terraform
+
 **terraform init**
 - This will initialise the current directory as a terraform environment
+
 **terraform plan**
 - This will check the terraform files for any errors and notify us of where these
 errors occurred
 - It is useful to run this after making changes to make sure you haven't made
 a syntax error
+
 **terraform build**
 - This will execute the code in your terraform files
