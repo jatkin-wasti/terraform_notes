@@ -1,17 +1,17 @@
 # Terraform
-- Is a HashiCorp product
-- Uses ingress and egress rules as inbound and outbound rules
-- Increases efficiency by automating the setup on AWS
-- Terraform is an IAC orchestration tool - it allows you to create IAC for
-deployment on any cloud
+- Terraform Is a HashiCorp product (the same company that makes Packer and Vagrant)
+- It's an IAC orchestration tool - it allows you to create IAC for
+deployment on any cloud, which means it's cloud independent
 - Cloud independent: Gives flexibility to be able to use different software or
 cloud provider (e.g. Azure, AWS etc) by changing one or two lines, while keeping
- the rest of the
-  code the same
-- Industry is moving towards multi cloud (using multiple cloud providers to
-  have the same infrastructure on multiple providers to decrease the chance
-  and cost of downtime), similar to a disaster recovery plan
-  - If one provider goes down, the traffic can be diverted to the other provider
+ the rest of the code the same
+- This is especially important as the industry is moving towards multi cloud
+infrastructure (using multiple cloud providers to have the same infrastructure
+  on multiple providers to decrease the chance and cost of downtime)
+    - This functions similarly to a disaster recovery plan
+    - If one provider goes down, the traffic can be diverted to the other provider
+- Increases efficiency by automating the setup on AWS
+- Uses ingress and egress rules as inbound and outbound rules
 - Lets you scale up and down as needed
 ![Terraform](images/terraform_diagram.png)
 ## Difference between Ansible and Terraform
