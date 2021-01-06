@@ -1,10 +1,10 @@
 resource "aws_security_group" "eng74-jamie-tf-db-SG" {
   name        = "eng74-jamie-tf-db-SG"
-  description = "Allow TLS inbound traffic"
+  description = "Allow traffic for app communication"
   vpc_id      = "vpc-07e47e9d90d2076da"
 
   ingress {
-    description = "TLS from VPC"
+    description = "Mongo from app instance"
     from_port   = 27017
     to_port     = 27017
     protocol    = "tcp"
@@ -12,7 +12,7 @@ resource "aws_security_group" "eng74-jamie-tf-db-SG" {
   }
 
   ingress {
-    description = "TLS from VPC"
+    description = "SSH from local ip"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
