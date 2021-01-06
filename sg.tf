@@ -50,7 +50,7 @@ resource "aws_security_group" "eng74-jamie-tf-db-SG" {
     from_port   = 27017
     to_port     = 27017
     protocol    = "tcp"
-    cidr_blocks = ["172.31.16.220/32"]
+    cidr_blocks = ["18.0.1.0/24"]
   }
 
   ingress {
