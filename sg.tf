@@ -1,7 +1,7 @@
 resource "aws_security_group" "eng74-jamie-tf-app-SG"{
 	name = "eng74-jamie-tf-app-SG"
 	description = "Allow access to app"
-	vpc_id = aws_vpc.vpc_terraform.id
+	vpc_id = aws_vpc.vpc-terraform.id
 
 	ingress {
 		description = "HTTP from all"
@@ -43,7 +43,7 @@ resource "aws_security_group" "eng74-jamie-tf-app-SG"{
 resource "aws_security_group" "eng74-jamie-tf-db-SG" {
   name        = "eng74-jamie-tf-db-SG"
   description = "Allow traffic for app communication"
-  vpc_id      = aws_vpc.vpc-terraform-name.id
+  vpc_id      = aws_vpc.vpc-terraform.id
 
   ingress {
     description = "Mongo from app instance"
