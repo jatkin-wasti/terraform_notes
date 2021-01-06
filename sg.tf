@@ -1,7 +1,7 @@
 resource "aws_security_group" "eng74-jamie-tf-app-SG"{
 	name = "eng74-jamie-tf-app-SG"
 	description = "Allow access to app"
-	vpc_id = aws_vpc.vpc-terraform-name.id
+	vpc_id = aws_vpc.vpc_terraform.id
 
 	ingress {
 		description = "HTTP from all"

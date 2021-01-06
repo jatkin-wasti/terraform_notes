@@ -17,7 +17,7 @@ resource "aws_instance" "nodejs_instance"{
         key_name = "eng74-jamie-aws-key"
 }
 
-resource "aws_vpc" "vpc-terraform-name" {
+resource "aws_vpc" "vpc_terraform" {
       cidr_block = "18.0.0.0/16"
       instance_tenancy = "default"
       tags = {
@@ -26,14 +26,14 @@ resource "aws_vpc" "vpc-terraform-name" {
 }
 
 resource "aws_internet_gateway" "gw" {
-      vpc_id = aws_vpc.vpc-terraform-name.id
+      vpc_id = aws_vpc.vpc_terraform.id
       tags = {
           Name = "eng74-jamie-igw-terraform"
       }
 }
 
 resource "aws_subnet" "subnet-public" {
-      vpc_id = aws_vpc.vpc-terraform-name.id
+      vpc_id = aws_vpc.vpc_terraform.id
       cidr_block = "18.0.1.0/24"
       tags = {
           Name = "eng74-jamie-pub-subnet-terraform"
@@ -41,7 +41,7 @@ resource "aws_subnet" "subnet-public" {
 }
 
 resource "aws_network_acl" "public_nacl" {
-      vpc_id = aws_vpc.vpc-terraform-name.id
+      vpc_id = aws_vpc.vpc_terraform.id
       subnet_ids = [aws_subnet.subnet-public.id]
 
       ingress {
@@ -94,7 +94,7 @@ resource "aws_network_acl" "public_nacl" {
 }
 
 resource "aws_route_table" "route_table_public" {
-      vpc_id = aws_vpc.vpc-terraform-name.id
+      vpc_id = aws_vpc.vpc_terraform.id
 
       route {
           cidr_block = "0.0.0.0/0"
