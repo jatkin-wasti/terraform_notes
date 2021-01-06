@@ -117,10 +117,11 @@ variable "variable_name" {
           region = var.region
  }
  ```
-### Calling parameters of resources
-- We might need to reference the ID or other infrastrucutre values that haven't
+### Using dynamic referencing of resource parameters
+- We might need to reference the ID or other infrastructure values that haven't
 been created yet
-- Terraform allows us to do this
+- Terraform allows us to do this dynamically using the resource, it's name and
+the parameter we want
 ### Using system variables
 - We may wish to obfuscate sensitive information in the terraform file, as we
 don't want information such as AWS keys going on GitHub for everyone to see
