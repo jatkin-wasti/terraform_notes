@@ -130,6 +130,44 @@ don't want information such as AWS keys going on GitHub for everyone to see
 - It will automatically look for your AWS keys and can see your environment
 variables, so as long as they are named correctly and the credentials are
 correct it should work
+## Using modules
+- By default, all our .tf files are in the root module
+- We can logically split large blocks of functionality into their own files
+within a module
+- These new modules can be called from our root module and are referred to as
+child modules
+- We can also make use of modules that other people have made
+- To call a child module, the syntax is
+```
+module "local_name_for_module" {
+  source = "./source/of/module"
+  version = " < 0.7.5, > 0.5.0"
+}
+```
+- In the above example, we:
+  - Specify a name for the module so that we can refer to it later
+  - Specify which module to load and from where with source
+  - Specify which version of the module to use if it is a published module (if
+    multiple versions that satisfies the constraint are found, it will download
+    the newest of these versions)
+- A child module only has access to data in that module, and likewise parent
+modules can not access the child processes data either
+- When creating a resource in a module that may require another resource's
+information, we can specify this with `depends on` as seen below, though this
+should be done sparingly
+```
+depends on = [
+  resource_type.name_of_resource
+]
+```
+- For a parent module to access information from a child module, we can use
+output values as seen below
+```
+resource "resource_type" "name_of_resource" {
+  logical_name = module.module_name.attribute
+}
+```
+
 ## Terraform commands
 **terraform help**
 - This will show you a list of commands that you can use with terraform
