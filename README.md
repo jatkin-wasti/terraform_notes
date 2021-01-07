@@ -133,7 +133,7 @@ correct it should work
 ## Using modules
 - By default, all our .tf files are in the root module
 - We can logically split large blocks of functionality into their own files
-within a module
+within a module to abstract complexity
 - These new modules can be called from our root module and are referred to as
 child modules
 - We can also make use of modules that other people have made
@@ -167,7 +167,74 @@ resource "resource_type" "name_of_resource" {
   logical_name = module.module_name.attribute
 }
 ```
-
+- Or we can create an output.tf file to retrieve this information
+- This file will have output blocks as seen below
+```
+output sg_app_id {
+    description = "id of app security group"
+    value = aws_security_group.sg_app.id
+}
+```
+- For a child module to access information from a parent module, we can pass it
+in like this
+```
+module "local_name_for_module" {
+  variable_name = resource_type.resource_name.attribute
+  variable_name2 = var.variable_name
+}
+```
+## Load Balancing
+### What is Load Balancing
+- Load Balancing is the act of distributing work across multiple computing
+resources for smoother operations
+- This could take the form of distributing application traffic to multiple EC2's
+across different Availability Zones
+- The resource block for an aws load balancer will look something like the
+example below
+```
+resource "aws_lb" "load_balancer_name" {
+  arguments = "example"
+}
+```
+### What types of Load Balancing are there?
+#### Static algorithms
+- Doesn't take into account the state of a system when distributing work
+- Assumptions of the system are used with the information it does know e.g. number
+  and power of available processors
+- Usually centralised around a router that distributes the tasks to optimise
+performance
+- Easy to set up
+- Very efficient for regular tasks
+- Can lead to overloading of some computer resources
+#### Dynamic algorithms
+- Takes into account the current workload of the computer resources
+- If a computer resource is overloading, some of it's work can be diverted to
+another available resource
+- Complicated to design but produces great results
+- Architecture can be more modular
+## Auto Scaling
+- Helps maintain a desired number of instances which can be crucial to ensure
+good load balancing
+- Can specify a minimum or maximum number of instances to exist at any one time
+- Can specify an exact number of instances at any given time
+- Based on traffic or demand, you can scale up the number of instances (or down
+  for drops in traffic)
+- This is all done automatically once the scaling policies have been set
+### Auto Scaling Groups
+- Collection of EC2's that are linked to facilitate auto scaling
+- Health checks are periodically run on the group to see if there are any issues
+with the instances within the auto scaling group
+  - If an issue is found, the instance is marked as unhealthily and may be
+  terminated and replaced with a new healthy instance
+- The auto scaling group ensures that the number of live instances matches the
+desired capacity and if the current infrastructure should be up or down scaled
+- A high availability system is one where important architecture is stored
+in multiple places to greatly decrease the chance of system failure
+  - Although it may seem unintuitive to pay to store the same data many times
+   over, this will often pay for itself over time i.e. if your system is down
+   once a year for half an hour and that costs you £3m in potential profit, and
+   the backups cost £6m a year, having these backups will give a return on
+   investment after 2 years
 ## Terraform commands
 **terraform help**
 - This will show you a list of commands that you can use with terraform
